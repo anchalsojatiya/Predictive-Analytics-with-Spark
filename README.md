@@ -1,13 +1,14 @@
 # Predictive-Analytics-with-Spark
-### 1. PART 1 - Basic Model
-Setup
-● We have executed this assignment in the provided VM setup without any additional changes. We used Spark version 2.4.0 and Hadoop version 2.7 to create the model as provided in the VM.
-Preprocessing
-● We started our analysis by importing various pyspark libraries such as pyspark.sql, pyspark.ml, Pandas, and re.
-● We loaded train, test, and mapping data from a csv file using pandas and loaded it into a pyspark dataframe.
-● Next we took the mapping dataframe and genre column from the train dataframe. Now for each element in the mapping dataframe we checked if it is the same as the element in the row of genre. If it is the same we gave it a value of 1, else a value of 0 is assigned. This way we got twenty values for each row in genre as a list. This step is to convert our labels i.e. genre column in the form we want for processing data and generating output in the format given in sample.csv.
-● Next we took the data frame created in the above step and combined it with the train dataframe using index.
-● For the next step we took a plot column from the train and test dataframe. First we converted the whole string to lowercase. Then we tokenized the string to get individual words from the string. Lastly we removed stop words, punctuations, and blank spaces from vectors created. After completing this process for the train data we only retained ‘movie_id’, ‘plot_output’, and ‘map_list’ columns and for test data we only retained ‘movie_id’ and ‘plot_output’ columns.
+## 1. PART 1 - Basic Model
+## Setup
+
+We have executed this assignment in the provided VM setup without any additional changes. We used Spark version 2.4.0 and Hadoop version 2.7 to create the model as provided in the VM.
+## Preprocessing
+We started our analysis by importing various pyspark libraries such as pyspark.sql, pyspark.ml, Pandas, and re.
+We loaded train, test, and mapping data from a csv file using pandas and loaded it into a pyspark dataframe.
+Next we took the mapping dataframe and genre column from the train dataframe. Now for each element in the mapping dataframe we checked if it is the same as the element in the row of genre. If it is the same we gave it a value of 1, else a value of 0 is assigned. This way we got twenty values for each row in genre as a list. This step is to convert our labels i.e. genre column in the form we want for processing data and generating output in the format given in sample.csv.
+Next we took the data frame created in the above step and combined it with the train dataframe using index.
+For the next step we took a plot column from the train and test dataframe. First we converted the whole string to lowercase. Then we tokenized the string to get individual words from the string. Lastly we removed stop words, punctuations, and blank spaces from vectors created. After completing this process for the train data we only retained ‘movie_id’, ‘plot_output’, and ‘map_list’ columns and for test data we only retained ‘movie_id’ and ‘plot_output’ columns.
 Term Document Matrix
 ● We used the CountVectorizer method on the plot_output column. We considered 500 words(vocal size=500) and also we used minDF=20 to remove words coming from more than 20 plots of the movie. minDf is used to remove document specific stop words.
 ● We transformed both train and test data using the CountVectorizer model.
